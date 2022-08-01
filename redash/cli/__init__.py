@@ -26,7 +26,7 @@ def create(group):
 def manager():
     """Management script for Redash"""
 
-
+# TODO  额外添加命令。
 manager.add_command(database.manager, "database")
 manager.add_command(users.manager, "users")
 manager.add_command(groups.manager, "groups")
@@ -34,7 +34,7 @@ manager.add_command(data_sources.manager, "ds")
 manager.add_command(organization.manager, "org")
 manager.add_command(queries.manager, "queries")
 manager.add_command(rq.manager, "rq")
-manager.add_command(run_command, "runserver")
+manager.add_command(run_command, "runserver")  #真正的入口
 
 
 @manager.command()
@@ -55,7 +55,7 @@ def check_settings():
     for name, item in current_app.config.items():
         print("{} = {}".format(name, item))
 
-
+# TODO  需要看
 @manager.command()
 @click.argument("email", default=settings.MAIL_DEFAULT_SENDER, required=False)
 def send_test_mail(email=None):
@@ -74,7 +74,7 @@ def send_test_mail(email=None):
         )
     )
 
-
+# TODO 需要看。
 @manager.command("shell")
 @with_appcontext
 def shell():

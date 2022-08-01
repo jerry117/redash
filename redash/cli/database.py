@@ -40,12 +40,12 @@ def load_extensions(db):
         for extension in settings.dynamic_settings.database_extensions:
             connection.execute(f'CREATE EXTENSION IF NOT EXISTS "{extension}";')
 
-
+# TODO  可以借鉴初始化数据库
 @manager.command()
 def create_tables():
     """Create the database tables."""
     from redash.models import db
-
+    #检查数据库链接
     _wait_for_db_connection(db)
 
     # We need to make sure we run this only if the DB is empty, because otherwise calling
